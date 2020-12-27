@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'css/base-style.css' %}" rel="stylesheet">
+        {% block head %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="top-nav-bar">
+            <ul>
+                <li><a href="{% url 'MainApp:home' %}">HOME</a></li>
+                <li><a href="{% url 'MainApp:galleryList' %}">GALLERY</a></li>
+                <li><a href="{% url 'BlogHandler:blog' %}">BLOG</a></li>
+                <li><a href="{% url 'MainApp:regParty' %}">REGISTER PARTY</a></li>
+                <li><a  class="last-item" href="{% url 'MainApp:regCandidate' %}">REGISTER CANDIDATE</a></li>
+                <div class="seperator"></div>
+            </ul>
+            <div class="seperator"></div>
+        </div>
+        {% block content %}
+                
+        {% endblock %}
+        <div class="footer">
+            <div class="decor"></div>
+            <footer>A Thomas Ngulube Production&copy; {{year}}</footer>
+        </div>
+    </body>
+
+</html>

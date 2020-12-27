@@ -1,0 +1,12 @@
+{% extends 'MainApp/base.html' %}
+{% load static %}
+{% block head %}
+    <title>View | {{party.name}}</title>
+    <link href="{% static 'css/viewParty.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="main-window">
+        <h1 style="text-align: center">{{party.name}}</h1>
+        <img src="{{ party.logo.url }}" alt="Party Logo">
+    </div>
+{% endblock %}

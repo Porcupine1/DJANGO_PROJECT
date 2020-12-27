@@ -1,0 +1,64 @@
+body{
+    margin: 0em;
+}
+
+header{
+    text-align: center;
+    font-size: 1.875em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: crimson;
+}
+
+.images-container{
+    padding-top: 2em;
+    padding-bottom: 2   em;
+}
+
+.images{
+    position: relative;
+    border-radius: 0.25em;
+    margin-left: 1.5625em;
+    margin-bottom: 1.5625em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    height: 12.5em;
+    width: 12.5em;
+    border: solid black 0.0625em;
+}
+
+.images .tooltip{
+    visibility: hidden;
+    position: absolute;
+    color: white;
+    background-color: crimson;
+    font-size: 0.8125em;
+    padding: 0.625em;
+    opacity: 0;
+    transition: opacity 1.5s;
+    top: 100%;
+    left: 40%;
+    border-radius: 0 0 0.25em 0.25em;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1;
+}
+
+.images .tooltip::after{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent crimson transparent ;
+}
+.images:hover .tooltip{
+    opacity: 1;
+    visibility: visible;
+}
+
+.seperator{
+    clear: both;
+}

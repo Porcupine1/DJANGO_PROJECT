@@ -1,0 +1,40 @@
+{% extends 'MainApp/base.html' %}
+{% load static %}
+{% block head %}
+    <title>Register | Candidate</title>
+    <link href="{% static 'css/register.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="main-window">
+        <div class="reg-header-parent">
+            <div class="line-through"></div>
+            <div class="reg-header">Candidate Registration</div>
+        </div>
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="candidate_name">Candidate Name</label><br />
+            <input type="text" id="candidate_name" name="candidate_name" /><br />
+
+            <label for="candidate_party">Party</label><br />
+            <select class="select-party" name="candidate_party" id="candidate_party">
+                <option>--Select Party--</option>
+                {% for party in parties %}
+                    <option value="{{party.name}}">{{party.name}}</option>
+                {% endfor %}
+            </select><br />
+
+            <label for="candidate_position">Position</label><br />
+            <input type="text" id="candidate_position" name="candidate_position" /><br />
+
+            <label for="candidate_description">Describe yourself</label><br />
+            <textarea name="candidate_description" id="candidate_description" placeholder="Description..."></textarea> <br />
+
+            <label for="candidate_img">Profile Picture</label><br/>
+            <input type="file" id="candidate_img" name="candidate_img" />
+            <div class="pro-pic-placeholder">
+                PROFILE PICTURE
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

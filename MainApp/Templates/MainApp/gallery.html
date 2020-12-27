@@ -1,0 +1,25 @@
+{% extends 'MainApp/base.html' %}
+{% load static %}
+{% block head %}
+    <title>Gallery</title>
+    <link href="{% static 'css/gallery.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="main-window">
+    <div class="parties">
+        <header>Parties</header>
+        <div class="images-container">
+            {% for party in parties %}
+            <a href="{% url 'MainApp:viewPartyDetail' party.pk %}">
+                <div class="images" style="background-image: url({{party.logo.url}});">
+                    <span class="tooltip">{{party.name}}</span>
+                </div>
+            </a>
+            {% endfor %}
+            <div class="seperator"></div>
+        </div>
+    </div>
+    <div class="seperator"></div>
+</div>
+{% endblock %}

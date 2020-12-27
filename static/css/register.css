@@ -1,0 +1,119 @@
+body{
+    background-image: url('/media/wallpaper/wallpaper1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-window{
+    width: 36.6em;
+    background-color: rgba(255, 255, 255, 0.733);
+    padding: 1.25em 1.875em;
+    border-radius: 0.3125em;
+}
+
+.reg-header-parent{
+    position: relative;
+    height: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+}
+.reg-header{
+    display: inline;
+    padding-right: 0.625em;
+    padding-left: 0.625em;
+    position: relative;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: crimson;
+}
+
+.line-through{
+    position: absolute;
+    margin: 0 auto;
+    border: none;
+    border-bottom: solid black 0.0625em;
+    width: 95%;
+    top: 50%;
+    z-index: 0;
+   
+}
+
+label{
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    font-size: 1.025em;
+}
+
+input[type=text]{
+    width: 12.5em;
+    height: 1.875em;
+    margin: 0.625em 0 0.9375em 0;
+    border: none;
+    border-bottom: solid crimson 0.125em;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    transition: width 1s;
+}
+
+input[type=text]:hover{
+    width: 100%;
+}
+
+input:focus{
+    border: solid crimson 0.0625em;
+    border-radius: 0.0625em;
+}
+
+.select-party{
+    width: 100%;
+    height: 1.875em;
+    margin: 0.625em 0 0.9375em 0;
+}
+
+.select-party:focus, .select-party:hover {
+    border: solid crimson 0.0625em;
+}
+
+textarea{
+    margin: 0.625em 0 0.9375em 0;
+    resize: none;
+    width: 12.5em;
+    height: 2.5em;
+    background-color: rgb(240, 240, 240);
+    border-radius: 0.125em;
+    transition: width 1s, height 1.7s;
+    outline: none;
+}
+
+textarea:hover{
+    width: 100%;
+    height: 9.375em;
+}
+
+textarea:focus{
+    background-color: white;
+    border: solid crimson 0.0625em;
+}
+
+.pro-pic-placeholder{
+    width: 9.375em;
+    height: 9.375em;
+    color: grey;
+    border: solid crimson 0.0625em;
+    display: inline-block;
+    line-height: 9.375em;
+    text-align: center;
+}
+
+.input [type=file]{
+    height: 1.875em;
+    vertical-align: center;
+}
+
+button{
+    background-color: crimson;
+    border: none;
+    padding: 1em;
+    margin-left: 0.625em;
+}

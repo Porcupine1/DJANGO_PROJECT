@@ -1,0 +1,32 @@
+{% extends 'MainApp/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title>Register | Party</title>
+    <link href="{% static 'css/register.css' %}" rel="stylesheet">
+{% endblock %}
+<body>
+    {% block content %}
+        <div class="main-window">
+            <div class="reg-header-parent">
+                <div class="line-through"></div>
+                <div class="reg-header">Party Registration</div>
+            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="party_name">Party Name</label><br />
+                <input type="text" id="party_name" name="party_name" /><br />
+
+                <label for="party_slogan">Party Slogan</label><br />
+                <input type="text" id="party_slogan" name="party_slogan" /><br />
+
+                <label for="party_logo">Party Logo</label>
+                <input type="file" id="party_logo" name="party_logo" />
+                <div class="pro-pic-placeholder">
+                    PROFILE PICTURE
+                </div>
+                <button type="submit">Register</button>
+             </form>
+        </div>
+        {% endblock %}
+</body>
