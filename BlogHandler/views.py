@@ -1,22 +1,44 @@
-from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Article, Aurthor, Comment
+from .models import Article, Author
+from django.views.generic import CreateView, DetailView, ListView
+from .forms import ArticleForm
 from datetime import datetime
 
+class articleCreate(CreateView):
+    model = Article
+    form_class = ArticleForm
 
-def blog(request):
-    articles = Article.objects.all()
-    context = {
-        'date': datetime.timetuple(datetime.now()).tm_year,
-        'articles': articles
-    }
-    if request.method == 'POST':
-        aurthor = Aurthor(name=request.POST['aurthor_name'])
-        article = Article(title=request.POST['article_title'],
-                          content=request.POST['article_content'],
-                          pub_date=str(datetime.now().date()),
-                          aurthor=aurthor)
-        aurthor.save()
+    def form_valid(self, form):
+        rt = super().form_valid(form)
+        article = form.save(commit=False)
+        author_name = self.request.POST['author']
+        author, created = Author.objects.get_or_create(name=author_name)
+        article.author = author
         article.save()
-        return redirect(reverse('BlogHandler:blog', args=()))
-    return render(request, 'BlogHandler/blog.html', context)
+        return rt
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(articleCreate, self).get_context_data(*args, **kwargs)
+        context['year'] = datetime.timetuple(datetime.now()).tm_year
+        return context
+
+    def get_success_url(self):
+        return reverse('BlogHandler:articleDetail',args=(self.object.pk,))
+
+class articleDetail(DetailView):
+    model = Article
+    context_object_name = 'article'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(articleDetail, self).get_context_data(*args, **kwargs)
+        context['year'] = datetime.timetuple(datetime.now()).tm_year
+        return context
+
+class articleList(ListView):
+    model = Article
+    context_object_name = 'articles'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(articleList, self).get_context_data(*args, **kwargs)
+        context['year'] = datetime.timetuple(datetime.now()).tm_year
+        return context

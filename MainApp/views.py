@@ -1,9 +1,7 @@
 from django.shortcuts import redirect, render
-from django.urls import reverse
 from django.views.generic import DetailView, ListView
 from .models import Party, Candidate
 from datetime import datetime
-from django.http import HttpResponseRedirect
 
 
 def home(request):
@@ -16,10 +14,9 @@ def home(request):
 class galleryList(ListView):
     model = Party
     context_object_name = 'parties'
-    template_name = 'MainApp/gallery.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_context_data(self, *args, **kwargs):
+        context = super(galleryList, self).get_context_data(*args, **kwargs)
         context['year'] = datetime.timetuple(datetime.now()).tm_year
         return context
 
@@ -41,10 +38,9 @@ def regParty(request):
 
 class viewPartyDetail(DetailView):
     model = Party
-    template_name = 'MainApp/viewParty.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_context_data(self, *args, **kwargs):
+        context = super(viewPartyDetail, self).get_context_data(*args, **kwargs)
         context['year'] = datetime.timetuple(datetime.now()).tm_year
         return context
 

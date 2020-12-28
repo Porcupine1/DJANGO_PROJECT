@@ -1,0 +1,16 @@
+{% extends 'MainApp/base.html' %}
+{% load static %}
+{% block head %}
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main-window">
+    <ul>
+        {% for article in articles %}
+            <li>{{article.title}} by {{article.author.name}}</li>
+        {% endfor %}
+    <ul>
+</div>
+{% endblock %}

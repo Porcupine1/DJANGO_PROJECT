@@ -14,12 +14,8 @@
     {% endfor %}
     <form action="" method="post">
         {% csrf_token %}
-        <h3>Write an Article here.</h3>
-        <label for="article_title">Title</label>
-        <input type="text" name="article_title" required>
-        <textarea name="article_content" id="article_content" required></textarea><br />
-        <label for="aurthor_name">Aurthor Name</label>
-        <input type="text" name="aurthor_name" required>
+        {{form.media}}
+        {{form.as_p}}
         <button type="submit">Post</button>
     </form>
 </div>
