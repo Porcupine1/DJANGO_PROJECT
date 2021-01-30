@@ -1,0 +1,26 @@
+.main-window{    
+    width: 60em;
+}
+
+.article_wrapper input{
+    width: 90%;
+    height: 30px;
+    padding: 5px;
+}
+
+.article_wrapper label{
+    font-weight: bold;
+    padding: 15px;
+    padding-left: 0px;
+}
+
+.article_wrapper button{
+    padding: 20px;
+    background-color: crimson;
+    border: none;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    left: 100%;
+    margin-left: -65px; 
+}

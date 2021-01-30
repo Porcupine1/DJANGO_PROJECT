@@ -4,6 +4,7 @@ from django.views.generic import CreateView, DetailView, ListView
 from .forms import ArticleForm
 from datetime import datetime
 
+
 class articleCreate(CreateView):
     model = Article
     form_class = ArticleForm
@@ -11,7 +12,7 @@ class articleCreate(CreateView):
     def form_valid(self, form):
         rt = super().form_valid(form)
         article = form.save(commit=False)
-        author_name = self.request.POST['author']
+        author_name = self.request.POST['author'].title()
         author, created = Author.objects.get_or_create(name=author_name)
         article.author = author
         article.save()
@@ -23,7 +24,8 @@ class articleCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('BlogHandler:articleDetail',args=(self.object.pk,))
+        return reverse('BlogHandler:articleDetail', args=(self.object.pk,))
+
 
 class articleDetail(DetailView):
     model = Article
@@ -32,7 +34,9 @@ class articleDetail(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(articleDetail, self).get_context_data(*args, **kwargs)
         context['year'] = datetime.timetuple(datetime.now()).tm_year
+        context['latest_artiles'] = Article.objects.all().order_by('-pub_date')[:20]
         return context
+
 
 class articleList(ListView):
     model = Article

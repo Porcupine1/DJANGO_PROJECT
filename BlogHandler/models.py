@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from tinymce.models import HTMLField
 
 
 class Author(models.Model):
@@ -9,10 +9,10 @@ class Author(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField("Title", max_length=100, null=False)
-    content = RichTextField(blank=True, null=False)
-    pub_date = models.DateTimeField("Publish Date", auto_now_add = True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+    title = models.CharField("Title", max_length=100, null=False)
+    pub_date = models.DateTimeField("Publish Date", auto_now_add = True)
+    content = HTMLField()
     def __str__(self):
         return self.title
 

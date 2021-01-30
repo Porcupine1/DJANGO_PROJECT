@@ -3,20 +3,22 @@
 {% block head %}
     <title>Blog</title>
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/article_form.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="main-window">
-    <h2>Recent Articles</h2>
     {% for article in articles %}
         <h4 class="article-title">{{article.title}}</h4>
         <p>{{article.content}}</p>
     {% endfor %}
     <form action="" method="post">
         {% csrf_token %}
-        {{form.media}}
-        {{form.as_p}}
-        <button type="submit">Post</button>
+        <div class="article_wrapper">
+            {{form.media}}
+            {{form.as_p}}
+            <button type="submit">Post</button>
+        </div>
     </form>
 </div>
 {% endblock %}
